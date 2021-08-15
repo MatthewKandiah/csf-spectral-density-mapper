@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# requires university username as argument
+USERNAME=$1
+if [ $# -eq 1 ] ; then
+	ssh ${USERNAME}@csf3.itservices.manchester.ac.uk
+else
+	echo "This script requires exactly 1 argument: your university username. Please try again..."
+fi
