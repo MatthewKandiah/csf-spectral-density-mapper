@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# requires university username as argument
-USERNAME=$1
+
 if [ $# -eq 1 ] ; then
+	USERNAME=$1
+	echo "Attempting to connect to Global Protect VPN, you may be asked for your username and password..."
+	globalprotect connect
+	echo "Attempting to connect to CSF3 via ssh, you will be asked for your password..."
 	ssh ${USERNAME}@csf3.itservices.manchester.ac.uk
 else
 	echo "This script requires exactly 1 argument: your university username. Please try again..."
