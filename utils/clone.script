@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [ $# -eq 1 ] ; then
+	HTTPS=$1
+	if [ pwd = *"scratch"* ]; then
+		echo "This script will not allow you to clone a repo into scratch/ or localscratch/. If you are sure you want to do this, you will have to do it manually"
+	else
+		echo "Attempting to clone repo to current location"
+		module load tools/env/proxy
+		module load apps/git/2.19.0
+		git clone HTTPS
+	fi
+else
+	echo "This script requires exactly 1 argument: the HTTPS URL for your github repository. Please try again..."
+fi
