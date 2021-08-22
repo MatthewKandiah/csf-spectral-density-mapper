@@ -12,4 +12,4 @@ export OMP_NUM_THREADS=$NSLOTS
 
 INDEX=$((SGE_TASK_ID-1))
 
-python3 underdampedSpectralDensityCSF.py $INDEX >> results/results_combined.txt
+python3 underdampedSpectralDensityCSF.py $INDEX
