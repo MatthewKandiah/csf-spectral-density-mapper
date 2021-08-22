@@ -1,2 +1,3 @@
-underdamped/*
+underdamped/mappingUnderdampedSpectralDensity.jobscript
+underdamped/underdampedSpectralDensityCSF.py
 rcmapping.py
