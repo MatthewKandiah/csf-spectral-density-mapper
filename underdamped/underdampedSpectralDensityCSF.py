@@ -1,6 +1,7 @@
 import rcmapping
 import sys
 import numpy as np
+import pickle
 
 PLOT_FREQUENCIES = np.arange(0.1, 1.1, 0.1)
 
