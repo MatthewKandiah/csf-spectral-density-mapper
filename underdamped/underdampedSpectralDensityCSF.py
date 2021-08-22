@@ -29,4 +29,6 @@ underdamped_spectral_density = rcmapping.SpectralDensity(
 mapped_spectral_density = rcmapping.Mapping(underdamped_spectral_density)
 mapped_spectral_density_point = mapped_spectral_density.calculate_mapped_spectral_density(omega)
 
-pickle.dump([omega, mapped_spectral_density_point], PICKLE_NAME)
+output_file = open(PICKLE_NAME, 'wb')
+pickle.dump([omega, mapped_spectral_density_point], output_file)
+output_file.close()
