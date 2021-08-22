@@ -11,6 +11,7 @@ pull frequency from command line variables
 if __name__ == "__main__":
 	index = int(sys.argv[1])
 	omega = PLOT_FREQUENCIES[index]
+	PICKLE_NAME = f"results/picklejar/plot_point_{index}.pickle"
 
 '''
 define constants for this calculation
@@ -28,4 +29,4 @@ underdamped_spectral_density = rcmapping.SpectralDensity(
 mapped_spectral_density = rcmapping.Mapping(underdamped_spectral_density)
 mapped_spectral_density_point = mapped_spectral_density.calculate_mapped_spectral_density(omega)
 
-print(omega, mapped_spectral_density_point)
+pickle.dump([omega, mapped_spectral_density_point], PICKLE_NAME)
