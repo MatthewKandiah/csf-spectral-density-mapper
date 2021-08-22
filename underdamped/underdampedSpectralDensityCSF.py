@@ -6,7 +6,7 @@ import pickle
 PLOT_FREQUENCIES = np.arange(0.1, 1.1, 0.1)
 
 '''
-pull frequency from command line variables
+pull index from command line variables
 '''
 if __name__ == "__main__":
 	index = int(sys.argv[1])
