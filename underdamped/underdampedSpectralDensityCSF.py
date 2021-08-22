@@ -11,7 +11,7 @@ pull frequency from command line variables
 if __name__ == "__main__":
 	index = int(sys.argv[1])
 	omega = PLOT_FREQUENCIES[index]
-	PICKLE_NAME = f"results/picklejar/plot_point_{index}.pickle"
+	PICKLE_NAME = f"/picklejar/plot_point_{index}.pickle"
 
 '''
 define constants for this calculation
