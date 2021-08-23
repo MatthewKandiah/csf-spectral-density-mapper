@@ -1,0 +1,12 @@
+#!/bin/bash --login
+#$ -cwd
+#$ -o ./output/
+#$ -e ./error/
+
+module load apps/anaconda3/5.2.0
+
+NUMBER_OF_PLOT_POINTS=$(find . -type f -name 'picklejar/*' -printf x | wc -c)
+
+echo "consolidating $NUMBER_OF_PLOT_POINTS into results"
+
+python3 generate_results.py $NUMBER_OF_PLOT_POINTS
