@@ -1,4 +1,5 @@
 underdamped/mappingUnderdampedSpectralDensity.jobscript
 underdamped/underdampedSpectralDensityCSF.py
 underdamped/generate_results.py
+underdamped/generate_results.jobscript
 rcmapping.py
