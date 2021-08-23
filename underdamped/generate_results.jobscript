@@ -5,7 +5,7 @@
 
 module load apps/anaconda3/5.2.0
 
-NUMBER_OF_PLOT_POINTS=$(find . -type f -wholename 'picklejar/*' -printf x | wc -c)
+NUMBER_OF_PLOT_POINTS=$(find . -type f -wholename './picklejar/*' -printf x | wc -c)
 
 echo "consolidating $NUMBER_OF_PLOT_POINTS into results"
 
