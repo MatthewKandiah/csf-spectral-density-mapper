@@ -17,15 +17,8 @@ for i in range(0,NUMBER_OF_PLOT_POINTS):
 	plot_points.append(plot_point)
 	in_file.close()
 
-### plot results
-
-plt.plot([x[0] for x in plot_points],[y[0] for y in plot_points])
-plt.xlabel('Frequency')
-plt.ylabel('Mapped spectral density')
-plt.savefig('./results/mapped_underdamped_spectral_density.png')
-
 ### write results to csv
 
 with open("./results/mapped_underdamped_spectral_density.csv", "w") as out_file:
 	writer = csv.writer(out_file)
-	writer.writerows()
+	writer.writerows(plot_points)
