@@ -8,7 +8,7 @@ import csv
 if __name__ == "__main__":
 	NUMBER_OF_PLOT_POINTS = int(sys.argv[1])
 
-plot_points = ['Frequency', 'Mapped Spectral Density']
+plot_points = [['Frequency', 'Mapped Spectral Density']]
 
 for i in range(0,NUMBER_OF_PLOT_POINTS):
 	in_file = open(f"./picklejar/plot_point_{i}.pickle", 'rb')
