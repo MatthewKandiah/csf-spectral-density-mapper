@@ -1,1 +1,4 @@
 underdamped/results/**
+overdamped/slow/results/**
+overdamped/fast/results/**
+overdamped/hard/results/**
