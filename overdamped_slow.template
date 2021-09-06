@@ -1,3 +1,5 @@
 overdamped/slow/mapping.jobscript
 overdamped/slow/overdampedSlowSpectralDensityCSF.py
+overdamped/slow/generate_results.py
+overdamped/slow/generate_results.jobscript
 rcmapping.py
