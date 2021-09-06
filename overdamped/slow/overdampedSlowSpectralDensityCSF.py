@@ -3,7 +3,7 @@ import sys
 import numpy as np
 import pickle
 
-PLOT_CUTOFF_FREQUENCIES = np.arange(0.1, 100.1, 10)
+PLOT_CUTOFF_FREQUENCIES = np.arange(0.1, 100.1, 1)
 
 '''
 pull index from command line variables
