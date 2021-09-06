@@ -11,7 +11,7 @@ if __name__ == "__main__":
 results = [['Cutoff Frequency', 'First Moment', 'Reorganisation Energy', 'RC Frequency', 'RC-system Coupling Strength']]
 
 for i in range(0,NUMBER_OF_PLOT_POINTS):
-	in_file = open(f"./picklejar/plot_point_{i}.pickle", 'rb')
+	in_file = open(f"./picklejar/result_{i}.pickle", 'rb')
 	result_row = pickle.load(in_file)
 	results.append(result_row)
 	in_file.close()
