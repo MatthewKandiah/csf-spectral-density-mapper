@@ -1,0 +1,15 @@
+#!/bin/bash --login
+#$ -cwd
+#$ -o ./output/
+#$ -e ./error/
+#$ -pe smp.pe 4
+#$ -t 1-10
+#$ -tc 10
+
+module load apps/anaconda3/5.2.0
+
+export OMP_NUM_THREADS=$NSLOTS
+
+INDEX=$((SGE_TASK_ID-1))
+
+python3 overdampedSlowSpectralDensityCSF.py $INDEX
