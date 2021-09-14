@@ -1,22 +1,28 @@
 import unittest
 import numpy as np
+import qutip as qt
 import master_equation_solver as mes
 
-class DensityOperator(unittest.TestCase):
+class TestState(unittest.TestCase):
+	def test_shape_throws_error(self):
+		state = mes.State(np.zeros((2,3)))
+		self.assertEqual(state.shape, (2,3))
+		self.assertRaises(ValueError, state.check_valid)
 
-	def test_density_operator(self):
-		array = np.array([[0.7,0.2+0.1j],[0.2-0.1j, 0.3]])
-		rho = mes.density_operator(array)
-		self.assertEqual(rho.trace, 1)
-		self.assertEqual(rho.dimension, 2)
-		self.assertTrue(rho.isHermitian)
+	def test_shape_valid(self):
+		state = mes.State(np.zeros((2,2)))
+		self.assertEqual(state.shape, (2,2))
+		# next line should not raise an error
+		state.check_valid
 
-	def test_bad_density_operator(self):
-		array =np.array([[0.2, 8j],[4, 1.3]])
-		rho = mes.density_operator(array)
-		self.assertEqual(rho.trace, 1.5)
-		self.assertEqual(rho.dimension, 2)
-		self.assertFalse(rho.isHermitian)
+	def test_isherm_throws_error(self):
+		state = mes.State(np.array([[1+2j, 0],[0, 1]]))
+		self.assertRaises(ValueError, state.check_valid)
+
+	def test_isherm_valid(self):
+		state = mes.State(np.array([[1, 0+1j],[0-1j, 2]]))
+		# next line should not raise an error
+		state.check_valid
 
 
 if __name__ == '__main__':
