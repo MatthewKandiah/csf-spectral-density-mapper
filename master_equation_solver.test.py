@@ -24,6 +24,25 @@ class TestState(unittest.TestCase):
 		# next line should not raise an error
 		state.check_valid
 
+	def test_trace_throws_error(self):
+		state = mes.State(np.array([[1,2],[3,4]]))
+		self.assertRaises(ValueError, state.check_valid)
+
+	def test_trace_valid(self):
+		state = mes.State(np.array([[0.5, 1],[1, 0.5]]))
+		# next line should not raise an error
+		state.check_valid
+
+	def test_trace_with_tolerance_throws_error(self):
+		state = mes.State(np.array([[0.5, 1],[1, 0.6]]))
+		with self.assertRaises(ValueError):
+			state.check_valid(0.01)
+
+	def test_trace_with_tolerance_valid(self):
+		state = mes.State(np.array([[0.5, 1],[1, 0.6]]))
+		# next line should not raise an error
+		state.check_valid(0.2)
+
 
 if __name__ == '__main__':
 	unittest.main()
