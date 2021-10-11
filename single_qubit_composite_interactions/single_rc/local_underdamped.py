@@ -13,12 +13,15 @@ f2 = 0.4
 ALPHA = 0.01
 GAMMA = 0.5
 OMEGA0 = 1
-TRUNCATION_LEVEL = 3
+TRUNCATION_LEVEL = 8
 id_rc = qt.qeye(TRUNCATION_LEVEL)
-TEMPERATURE = 0.5
+TEMPERATURE = 0.3
 
 # system Hamiltonian
 HamS = OMEGA0 / (2 * np.sqrt(f1**2 + f2**2)) * (f1 * mes.sigz - f2 * mes.sigx)
+
+# system part of interaction Hamiltonian
+HamI = np.sqrt(f1**2 + f2**2) * mes.sigz
 
 # specify bath parameters
 underdamped_spectral_density = rcm.SpectralDensity(
@@ -42,7 +45,7 @@ mapping = rcm.Mapping(bath.spectral_density)
 HamSS = (
             qt.tensor(HamS, id_rc) 
             +mapping.rc_frequency * qt.tensor(mes.id2, number)
-            +mapping.rc_system_coupling_strength * qt.tensor(mes.sigz, create + destroy)
+            +mapping.rc_system_coupling_strength * qt.tensor(HamI, create + destroy)
         )
 
 # numerically calculate eigensystem of augmented Hamiltonian
@@ -95,5 +98,19 @@ interaction_liouvillian = ( - qt.spre(operator_A * operator_chi)
 liouvillian = unitary_liouvillian + interaction_liouvillian
 
 # solve master equation
+steady_state = (mes.steady_state_solver(liouvillian, "iterative-gmres", 1e-20)).ptrace(0)
+print(steady_state)
+
+# Bloch rotation about y-axis
+def rot_y(theta):
+    return np.cos(theta/2)*mes.id2 - 1j * np.sin(theta/2) * mes.sigy
+
+theta = np.arctan(-f2 / f1)
+
+# check this diagonalises system part of the interaction Hamiltonian as expected
+# print (rot_y(theta)*(f1 * mes.sigz + f2*mes.sigx)*rot_y(theta).dag())
 
 # rotate steady state basis to compare to Guarnieri's weak coupling results
+rotated_steady_state = rot_y(theta).dag() * steady_state * rot_y(theta)
+
+print(rotated_steady_state)

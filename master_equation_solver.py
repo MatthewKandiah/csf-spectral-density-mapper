@@ -7,7 +7,7 @@ class Bath:
 		self.temperature = temperature
 
 
-def steady_state_solver(Liouvillian, solver_method, absolute_tolerance):
+def steady_state_solver(liouvillian, solver_method, absolute_tolerance):
 	rhoSS_steady = qt.steadystate(
 		liouvillian, 
 		method=solver_method, 
